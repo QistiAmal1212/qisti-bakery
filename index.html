@@ -220,45 +220,112 @@
 
 
     <!-- Facts Start -->
-    <div class="container-xxl py-2 slidea" style="background-color:#fafafa; max-width:100% !important;     padding-top: 3rem !important;
-    padding-bottom: 3rem !important;   overflow-x: auto;">
+    <div class="container-xxl py-2 slidea" style="background-color:#fafafa; max-width:100%; padding-top:3rem; padding-bottom:3rem; position:relative; overflow:hidden;">
+
+        <!-- Scroll Left Button -->
+        <button onclick="scrollContainer(-1)" style="
+            background-color:#ffffff;
+            border:none;
+            box-shadow:0 4px 12px rgba(0,0,0,0.1);
+            width:48px;
+            height:48px;
+            border-radius:50%;
+            cursor:pointer;
+            position:absolute;
+            top:50%;
+            left:10px;
+            transform:translateY(-50%);
+            z-index:10;
+            display:flex;
+            justify-content:center;
+            align-items:center;
+            transition: all 0.3s ease;">
+            
+            <!-- Left Arrow SVG -->
+            <svg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 24 24' stroke='currentColor' style="width:24px;height:24px;color:#333;">
+                <path stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M15 19l-7-7 7-7' />
+            </svg>
+        </button>
+    
+        <!-- Scroll Right Button -->
+        <button onclick="scrollContainer(1)" style="
+            background-color:#ffffff;
+            border:none;
+            box-shadow:0 4px 12px rgba(0,0,0,0.1);
+            width:48px;
+            height:48px;
+            border-radius:50%;
+            cursor:pointer;
+            position:absolute;
+            top:50%;
+            right:10px;
+            transform:translateY(-50%);
+            z-index:10;
+            display:flex;
+            justify-content:center;
+            align-items:center;
+            transition: all 0.3s ease;">
+            
+            <!-- Right Arrow SVG -->
+            <svg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 24 24' stroke='currentColor' style="width:24px;height:24px;color:#333;">
+                <path stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M9 5l7 7-7 7' />
+            </svg>
+        </button>
+    
         <div class="container">
-            <div class=" g-4" style="display:flex !important">
-                <div class="wow fadeIn" data-wow-delay="0.1s"  style=" width:100%;">
-                    <div class="fact-item bg-light rounded text-center h-100 p-5" style="background-color: #f7f4ef !important;  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1); margin-right:20px; height:90% !important; margin-top:5% !important">
-                        <img class="img-fluid rounded" src="img/year-exp.png" alt="">
-                        <!-- <i class="fa fa-certificate fa-4x text-primary mb-4"></i> -->
-                        <p class="mb-2">Years Experience</p>
-                        <h1 class="display-5 mb-0" data-toggle="counter-up">13</h1>
+            <div id="scrollable" style="display:flex; overflow-x:auto; scroll-behavior:smooth; padding:20px 0;">
+                
+                <!-- Item 1 -->
+                <div class="wow fadeIn" data-wow-delay="0.1s" style="flex:0 0 auto; width:60vw; margin-left:14vw;">
+                    <div style="background-color:#f7f4ef; box-shadow:0 4px 15px rgba(0,0,0,0.1); border-radius:8px; text-align:center; height:90%; margin-top:5%; padding:40px;">
+                        <img src="img/year-exp.png" alt="" style="height:80px; margin-bottom:10px;">
+                        <p style="margin-bottom:10px; color:#333;">Years Experience</p>
+                        <h1 style="font-size:2.5rem; margin:0; color:#000;">13</h1>
                     </div>
                 </div>
-                <div class="wow fadeIn" data-wow-delay="0.3s" style=" width:100%;">
-                    <div class="fact-item bg-light rounded text-center h-100 p-5" style="background-color: #f7f4ef !important;  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1); margin-right:20px;  height:90% !important; margin-top:5% !important">
-                        <img class="img-fluid rounded" src="img/skilled-profesional.png" alt="">
-                        <!-- <i class="fa fa-users fa-4x text-primary mb-4"></i> -->
-                        <p class="mb-2">Skilled Professionals</p>
-                        <h1 class="display-5 mb-0" data-toggle="counter-up">2</h1>
+                
+                <!-- Item 2 -->
+                <div class="wow fadeIn" data-wow-delay="0.3s" style="flex:0 0 auto; width:60vw; margin-left:20vw;">
+                    <div style="background-color:#f7f4ef; box-shadow:0 4px 15px rgba(0,0,0,0.1); border-radius:8px; text-align:center; height:90%; margin-top:5%; padding:40px;">
+                        <img src="img/skilled-profesional.png" alt="" style="height:80px; margin-bottom:10px;">
+                        <p style="margin-bottom:10px; color:#333;">Skilled Professionals</p>
+                        <h1 style="font-size:2.5rem; margin:0; color:#000;">2</h1>
                     </div>
                 </div>
-                <div class="wow fadeIn" data-wow-delay="0.5s" style=" width:100%;">
-                    <div class="fact-item bg-light rounded text-center h-100 p-5" style="background-color: #f7f4ef !important;  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1); margin-right:20px;  height:90% !important; margin-top:5% !important">
-                        <img class="img-fluid rounded" src="img/total-product.png" alt="">
-                        <!-- <i class="fa fa-bread-slice fa-4x text-primary mb-4"></i> -->
-                        <p class="mb-2">Total Products</p>
-                        <h1 class="display-5 mb-0" data-toggle="counter-up">135</h1>
+    
+                <!-- Item 3 -->
+                <div class="wow fadeIn" data-wow-delay="0.5s" style="flex:0 0 auto; width:60vw; margin-left:20vw;">
+                    <div style="background-color:#f7f4ef; box-shadow:0 4px 15px rgba(0,0,0,0.1); border-radius:8px; text-align:center; height:90%; margin-top:5%; padding:40px;">
+                        <img src="img/total-product.png" alt="" style="height:80px; margin-bottom:10px;">
+                        <p style="margin-bottom:10px; color:#333;">Total Products</p>
+                        <h1 style="font-size:2.5rem; margin:0; color:#000;">135</h1>
                     </div>
                 </div>
-                <div class="wow fadeIn" data-wow-delay="0.7s" style=" width:100%;">
-                    <div class="fact-item bg-light rounded text-center h-100 p-5" style="background-color: #f7f4ef !important;  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1); margin-right:20px;  height:90% !important; margin-top:5% !important">
-                        <img class="img-fluid rounded" src="img/order-total.png" alt="">
-                        <!-- <i class="fa fa-cart-plus fa-4x text-primary mb-4"></i> -->
-                        <p class="mb-2">Order Everyday</p>
-                        <h1 class="display-5 mb-0" data-toggle="counter-up">100</h1>
+    
+                <!-- Item 4 -->
+                <div class="wow fadeIn" data-wow-delay="0.7s" style="flex:0 0 auto; width:60vw; margin-left:20vw; margin-right:20vw;">
+                    <div style="background-color:#f7f4ef; box-shadow:0 4px 15px rgba(0,0,0,0.1); border-radius:8px; text-align:center; height:90%; margin-top:5%; padding:40px;">
+                        <img src="img/order-total.png" alt="" style="height:80px; margin-bottom:10px;">
+                        <p style="margin-bottom:10px; color:#333;">Order Everyday</p>
+                        <h1 style="font-size:2.5rem; margin:0; color:#000;">100</h1>
                     </div>
                 </div>
+    
             </div>
         </div>
     </div>
+    
+    <script>
+        function scrollContainer(direction) {
+            const container = document.getElementById('scrollable');
+            const distance = window.innerWidth * 0.8; // 80% of viewport width
+    
+            // Direction should be 1 or -1 (right or left)
+            container.scrollLeft += direction * distance;
+        }
+    </script>
+    
+    
     <!-- Facts End -->
 
 
