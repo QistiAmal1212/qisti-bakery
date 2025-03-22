@@ -38,6 +38,25 @@
     pointer-events: auto; /* Allow interaction with the buttons */
 }
 
+/* Hide Slide B on mobile, show Slide A */
+.slidea {
+    display: block;
+}
+.slideb {
+    display: none;
+}
+
+/* For screens larger than 768px */
+@media (min-width: 768px) {
+    .slidea {
+        display: none;
+    }
+    .slideb {
+        display: block;
+    }
+}
+
+
     </style>
 </head>
 
@@ -158,11 +177,11 @@
     </div>
     <!-- About End -->
     <!-- Facts Start -->
-    <div class="container-xxl py-2" style="background-color:#fafafa; max-width:100% !important;     padding-top: 3rem !important;
+    <div class="container-xxl py-2 slideb" style="background-color:#fafafa; max-width:100% !important;     padding-top: 3rem !important;
     padding-bottom: 3rem !important;">
         <div class="container">
             <div class="row g-4">
-                <div class="col-lg-3 col-md-6 wow fadeIn" data-wow-delay="0.1s">
+                <div class="col-lg-3 col-md-6 wow fadeIn" data-wow-delay="0.1s" >
                     <div class="fact-item bg-light rounded text-center h-100 p-5" style="background-color: #f7f4ef !important;  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1); margin-right:20px;">
                         <img class="img-fluid rounded" src="img/year-exp.png" alt="">
                         <!-- <i class="fa fa-certificate fa-4x text-primary mb-4"></i> -->
@@ -199,6 +218,48 @@
     </div>
     <!-- Facts End -->
 
+
+    <!-- Facts Start -->
+    <div class="container-xxl py-2 slidea" style="background-color:#fafafa; max-width:100% !important;     padding-top: 3rem !important;
+    padding-bottom: 3rem !important;   overflow-x: auto;">
+        <div class="container">
+            <div class=" g-4" style="display:flex !important">
+                <div class="wow fadeIn" data-wow-delay="0.1s"  style=" width:100%;">
+                    <div class="fact-item bg-light rounded text-center h-100 p-5" style="background-color: #f7f4ef !important;  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1); margin-right:20px; height:90% !important; margin-top:5% !important">
+                        <img class="img-fluid rounded" src="img/year-exp.png" alt="">
+                        <!-- <i class="fa fa-certificate fa-4x text-primary mb-4"></i> -->
+                        <p class="mb-2">Years Experience</p>
+                        <h1 class="display-5 mb-0" data-toggle="counter-up">13</h1>
+                    </div>
+                </div>
+                <div class="wow fadeIn" data-wow-delay="0.3s" style=" width:100%;">
+                    <div class="fact-item bg-light rounded text-center h-100 p-5" style="background-color: #f7f4ef !important;  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1); margin-right:20px;  height:90% !important; margin-top:5% !important">
+                        <img class="img-fluid rounded" src="img/skilled-profesional.png" alt="">
+                        <!-- <i class="fa fa-users fa-4x text-primary mb-4"></i> -->
+                        <p class="mb-2">Skilled Professionals</p>
+                        <h1 class="display-5 mb-0" data-toggle="counter-up">2</h1>
+                    </div>
+                </div>
+                <div class="wow fadeIn" data-wow-delay="0.5s" style=" width:100%;">
+                    <div class="fact-item bg-light rounded text-center h-100 p-5" style="background-color: #f7f4ef !important;  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1); margin-right:20px;  height:90% !important; margin-top:5% !important">
+                        <img class="img-fluid rounded" src="img/total-product.png" alt="">
+                        <!-- <i class="fa fa-bread-slice fa-4x text-primary mb-4"></i> -->
+                        <p class="mb-2">Total Products</p>
+                        <h1 class="display-5 mb-0" data-toggle="counter-up">135</h1>
+                    </div>
+                </div>
+                <div class="wow fadeIn" data-wow-delay="0.7s" style=" width:100%;">
+                    <div class="fact-item bg-light rounded text-center h-100 p-5" style="background-color: #f7f4ef !important;  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1); margin-right:20px;  height:90% !important; margin-top:5% !important">
+                        <img class="img-fluid rounded" src="img/order-total.png" alt="">
+                        <!-- <i class="fa fa-cart-plus fa-4x text-primary mb-4"></i> -->
+                        <p class="mb-2">Order Everyday</p>
+                        <h1 class="display-5 mb-0" data-toggle="counter-up">100</h1>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Facts End -->
 
 
 
