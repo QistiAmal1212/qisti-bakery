@@ -316,14 +316,66 @@
     </div>
     
     <script>
+        let scrollRightClicks = 0; // count right scrolls
+        const maxRightClicks = 3;  // limit right scrolls
+    
         function scrollContainer(direction) {
             const container = document.getElementById('scrollable');
             const distance = window.innerWidth * 0.8; // 80% of viewport width
     
-            // Direction should be 1 or -1 (right or left)
-            container.scrollLeft += direction * distance;
+            // If scrolling right
+            if (direction === 1) {
+                if (scrollRightClicks < maxRightClicks) {
+                    container.scrollLeft += distance;
+                    scrollRightClicks++;
+                }
+    
+                // Disable right button if max reached
+                if (scrollRightClicks >= maxRightClicks) {
+                    document.getElementById('scrollRightBtn').disabled = true;
+                    document.getElementById('scrollRightBtn').style.opacity = 0.5; // visual feedback
+                    document.getElementById('scrollRightBtn').style.cursor = 'not-allowed';
+                }
+    
+                // Enable left button if we can go back
+                if (scrollRightClicks > 0) {
+                    document.getElementById('scrollLeftBtn').disabled = false;
+                    document.getElementById('scrollLeftBtn').style.opacity = 1;
+                    document.getElementById('scrollLeftBtn').style.cursor = 'pointer';
+                }
+    
+            } else if (direction === -1) { // If scrolling left
+                if (scrollRightClicks > 0) {
+                    container.scrollLeft -= distance;
+                    scrollRightClicks--;
+                }
+    
+                // Disable left button if at starting point
+                if (scrollRightClicks <= 0) {
+                    document.getElementById('scrollLeftBtn').disabled = true;
+                    document.getElementById('scrollLeftBtn').style.opacity = 0.5;
+                    document.getElementById('scrollLeftBtn').style.cursor = 'not-allowed';
+                }
+    
+                // Re-enable right button if we are not at max
+                if (scrollRightClicks < maxRightClicks) {
+                    document.getElementById('scrollRightBtn').disabled = false;
+                    document.getElementById('scrollRightBtn').style.opacity = 1;
+                    document.getElementById('scrollRightBtn').style.cursor = 'pointer';
+                }
+            }
+    
+            console.log("Right clicks:", scrollRightClicks);
         }
+    
+        // Optional: Disable left button initially
+        window.onload = function() {
+            document.getElementById('scrollLeftBtn').disabled = true;
+            document.getElementById('scrollLeftBtn').style.opacity = 0.5;
+            document.getElementById('scrollLeftBtn').style.cursor = 'not-allowed';
+        };
     </script>
+    
     
     
     <!-- Facts End -->
