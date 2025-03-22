@@ -249,6 +249,8 @@ h6,
 /*** Product ***/
 .product-item {
     transition: .5s;
+    background: var(--primary) !important;
+    color: #fff !important;
 }
 
 .product-item:hover {
