@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Qisti Bakery</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=Great+Vibes&display=swap" rel="stylesheet">
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            fontFamily: {
+              serif: ['"Playfair Display"', 'serif'],
+              sans: ['"Lato"', 'sans-serif'],
+              script: ['"Great Vibes"', 'cursive'],
+            },
+            colors: {
+              bakery: {
+                50: '#FFFBEB', // Amber 50 - Warm Cream
+                100: '#FEF3C7', // Amber 100
+                200: '#FDE68A', // Amber 200
+                300: '#FCD34D', // Amber 300
+                400: '#FBBF24', // Amber 400 - Primary Golden Yellow
+                500: '#F59E0B', // Amber 500
+                600: '#D97706', // Amber 600
+                700: '#334155', // Slate 700
+                800: '#1E293B', // Slate 800 - Deep Navy
+                900: '#0F172A', // Slate 900 - Primary Dark Text (Deep Navy)
+                950: '#020617', // Slate 950 - Darkest Navy Background
+              },
+            },
+            animation: {
+              'fade-in-up': 'fadeInUp 1.0s cubic-bezier(0.16, 1, 0.3, 1) forwards',
+              'fade-in': 'fadeIn 1.5s ease-out forwards',
+              'zoom-slow': 'zoomSlow 25s ease-in-out infinite alternate',
+              'slide-up': 'slideUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards',
+              'shimmer': 'shimmer 1.5s infinite',
+            },
+            keyframes: {
+              fadeInUp: {
+                '0%': { opacity: '0', transform: 'translateY(30px)' },
+                '100%': { opacity: '1', transform: 'translateY(0)' },
+              },
+              fadeIn: {
+                '0%': { opacity: '0' },
+                '100%': { opacity: '1' },
+              },
+              zoomSlow: {
+                '0%': { transform: 'scale(1)' },
+                '100%': { transform: 'scale(1.1)' },
+              },
+              slideUp: {
+                 '0%': { transform: 'translateY(100%)' },
+                 '100%': { transform: 'translateY(0)' },
+              },
+              shimmer: {
+                '100%': { transform: 'translateX(100%)' },
+              }
+            }
+          }
+        }
+      }
+    </script>
+    <style>
+      /* Hide scrollbar for Chrome, Safari and Opera */
+      ::-webkit-scrollbar {
+        display: none;
+      }
+
+      /* Hide scrollbar for IE, Edge and Firefox */
+      html {
+        -ms-overflow-style: none;  /* IE and Edge */
+        scrollbar-width: none;  /* Firefox */
+        scroll-behavior: smooth;
+      }
+      
+      ::selection {
+        background: #FBBF24;
+        color: #020617;
+      }
+    </style>
+  <script type="importmap">
+{
+  "imports": {
+    "react": "https://aistudiocdn.com/react@^19.2.1",
+    "react-dom/": "https://aistudiocdn.com/react-dom@^19.2.1/",
+    "react/": "https://aistudiocdn.com/react@^19.2.1/",
+    "@google/genai": "https://aistudiocdn.com/@google/genai@^1.32.0"
+  }
+}
+</script>
+</head>
+  <body class="bg-bakery-50 text-bakery-900 font-sans antialiased selection:bg-bakery-400 selection:text-white">
+    <div id="root"></div>
+  </body>
+</html>
