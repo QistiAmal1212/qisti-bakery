@@ -20,7 +20,6 @@ const initialGalleryItems = [
 // Duplicate items to simulate infinite scroll data
 const allGalleryItems = [...initialGalleryItems, ...initialGalleryItems.map(i => ({...i, id: i.id + 100})), ...initialGalleryItems.map(i => ({...i, id: i.id + 200}))];
 
-// "Highlights" acting as filters
 const highlights = [
     { id: 'All', name: 'All', image: 'https://images.unsplash.com/photo-1578985545062-69928b1d9587?q=80&w=200&auto=format&fit=crop' },
     { id: 'Wedding', name: 'Weddings', image: 'https://images.unsplash.com/photo-1535254973040-607b474cb50d?q=80&w=200&auto=format&fit=crop' },
@@ -30,7 +29,6 @@ const highlights = [
     { id: 'Custom', name: 'Custom', image: 'https://images.unsplash.com/photo-1542826438-bd32f43d626f?q=80&w=200&auto=format&fit=crop' },
 ];
 
-// Image with Skeleton Component
 const ImageWithSkeleton = ({ src, alt }: { src: string; alt: string }) => {
     const [isLoaded, setIsLoaded] = useState(false);
 
@@ -38,7 +36,6 @@ const ImageWithSkeleton = ({ src, alt }: { src: string; alt: string }) => {
         <div className="w-full h-full relative bg-gray-100 overflow-hidden">
             {!isLoaded && (
                 <div className="absolute inset-0 z-10 bg-gray-200">
-                    {/* Shimmer Effect */}
                     <div className="absolute inset-0 -translate-x-full bg-gradient-to-r from-transparent via-white/50 to-transparent animate-shimmer"></div>
                 </div>
             )}
@@ -57,14 +54,12 @@ const Gallery: React.FC = () => {
     const [activeFilter, setActiveFilter] = useState('All');
     const ITEMS_PER_PAGE = 12;
 
-    // Helper to get items
     const getFilteredItems = (filter: string) => {
         return filter === 'All' 
             ? allGalleryItems 
             : allGalleryItems.filter(item => item.category === filter);
     };
 
-    // Initialize state synchronously with data to avoid empty flash
     const [displayItems, setDisplayItems] = useState<typeof allGalleryItems>(() => {
         return getFilteredItems('All').slice(0, ITEMS_PER_PAGE);
     });
@@ -76,9 +71,7 @@ const Gallery: React.FC = () => {
     const observerTarget = useRef(null);
     const isFirstRun = useRef(true);
 
-    // Handle filter change
     useEffect(() => {
-        // Skip the first run because we already initialized state synchronously
         if (isFirstRun.current) {
             isFirstRun.current = false;
             return;
@@ -91,7 +84,6 @@ const Gallery: React.FC = () => {
         window.scrollTo(0, 0);
     }, [activeFilter]);
 
-    // Infinite Scroll Logic
     useEffect(() => {
         const observer = new IntersectionObserver(
             entries => {
@@ -117,7 +109,6 @@ const Gallery: React.FC = () => {
         return () => observer.disconnect();
     }, [displayItems.length, activeFilter]);
 
-    // Keyboard Navigation
     useEffect(() => {
         const handleKeyDown = (e: KeyboardEvent) => {
             if (selectedIndex === null) return;
@@ -146,8 +137,6 @@ const Gallery: React.FC = () => {
 
     return (
         <div className="min-h-screen bg-white pb-24 font-sans">
-             
-             {/* Highlights / Filters Section */}
              <div className="max-w-[935px] mx-auto px-5 pt-6 pb-6 border-b border-gray-200">
                 <div className="flex gap-8 md:gap-12 overflow-x-auto pb-2 scrollbar-hide justify-start md:justify-center">
                     {highlights.map((highlight) => (
@@ -167,7 +156,6 @@ const Gallery: React.FC = () => {
                 </div>
              </div>
 
-             {/* Gallery Grid - 3 Column Square */}
              <div className="max-w-[935px] mx-auto pt-1">
                  <div className="grid grid-cols-3 gap-1 md:gap-7">
                      {displayItems.map((item, idx) => (
@@ -177,31 +165,24 @@ const Gallery: React.FC = () => {
                             onClick={() => setSelectedIndex(idx)}
                          >
                              <ImageWithSkeleton src={item.image} alt={item.caption} />
-                             
-                             {/* Hover Overlay - Context Only */}
                              <div className="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center pointer-events-none z-20">
                                  <span className="text-white font-bold text-sm uppercase tracking-widest border border-white px-4 py-2">{item.category}</span>
                              </div>
                          </div>
                      ))}
                  </div>
-
-                 {/* Sentinel for Infinite Scroll */}
                  <div ref={observerTarget} className="h-10 mt-4"></div>
              </div>
 
-             {/* Lightbox Modal (Full Screen Slide) */}
              {activeItem && (
                  <div 
                     className="fixed inset-0 z-[60] bg-black/95 flex flex-col items-center justify-center animate-fade-in" 
                     onClick={() => setSelectedIndex(null)}
                  >
-                     {/* Close Button */}
                      <button className="absolute top-6 right-6 text-white z-50 hover:opacity-70 transition-opacity p-2">
                         <svg className="w-8 h-8" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.5" d="M6 18L18 6M6 6l12 12" /></svg>
                      </button>
 
-                     {/* Prev Button */}
                      {selectedIndex !== null && selectedIndex > 0 && (
                         <button 
                             className="absolute left-2 md:left-8 top-1/2 -translate-y-1/2 text-white z-50 p-2 hover:bg-white/10 rounded-full transition-colors"
@@ -212,7 +193,6 @@ const Gallery: React.FC = () => {
                         </button>
                      )}
 
-                     {/* Next Button */}
                      {selectedIndex !== null && selectedIndex < displayItems.length - 1 && (
                         <button 
                             className="absolute right-2 md:right-8 top-1/2 -translate-y-1/2 text-white z-50 p-2 hover:bg-white/10 rounded-full transition-colors"
@@ -223,7 +203,6 @@ const Gallery: React.FC = () => {
                         </button>
                      )}
                      
-                     {/* Image Container */}
                      <div 
                         className="relative w-full h-full flex items-center justify-center p-4 md:p-8" 
                         onClick={e => e.stopPropagation()}
@@ -232,7 +211,7 @@ const Gallery: React.FC = () => {
                             key={activeItem.id} 
                             src={activeItem.image} 
                             alt="Post" 
-                            className="max-h-[85vh] md:max-h-[90vh] max-w-full object-contain shadow-2xl animate-fade-in" 
+                            className="max-h-[90vh] max-w-full object-contain shadow-2xl animate-fade-in" 
                          />
                      </div>
                  </div>

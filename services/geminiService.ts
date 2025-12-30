@@ -1,17 +1,14 @@
+
 import { GoogleGenAI, Type, Schema, Chat } from "@google/genai";
 import { GeneratedCakeResponse } from '../types';
-
-// Initialize Gemini API Client
-// Ideally this should be wrapped in a class or hook for better lifecycle management,
-// but for this scope, a singleton-like pattern works.
-const ai = new GoogleGenAI({ apiKey: process.env.API_KEY });
 
 /**
  * Creates a chat session with specific context for Qisti Bakery
  */
 export const createBakeryChat = (): Chat => {
+  const ai = new GoogleGenAI({ apiKey: process.env.API_KEY });
   return ai.chats.create({
-    model: 'gemini-2.5-flash',
+    model: 'gemini-3-flash-preview',
     config: {
       systemInstruction: `You are QisAI, the charming and helpful AI assistant for Qisti Bakery in Kuala Lumpur.
       
@@ -51,6 +48,7 @@ export const createBakeryChat = (): Chat => {
  */
 export const generateCakeImage = async (prompt: string): Promise<string | null> => {
   try {
+    const ai = new GoogleGenAI({ apiKey: process.env.API_KEY });
     const response = await ai.models.generateContent({
       model: 'gemini-2.5-flash-image',
       contents: {
@@ -66,7 +64,6 @@ export const generateCakeImage = async (prompt: string): Promise<string | null> 
       config: {
         imageConfig: {
             aspectRatio: "1:1",
-            // imageSize is not supported on flash-image, so we omit it
         }
       },
     });
@@ -85,10 +82,11 @@ export const generateCakeImage = async (prompt: string): Promise<string | null> 
 };
 
 /**
- * Generates text details about the cake using gemini-2.5-flash
+ * Generates text details about the cake using gemini-3-flash-preview
  */
 export const generateCakeDetails = async (prompt: string): Promise<GeneratedCakeResponse> => {
   try {
+    const ai = new GoogleGenAI({ apiKey: process.env.API_KEY });
     const responseSchema: Schema = {
       type: Type.OBJECT,
       properties: {
@@ -113,7 +111,7 @@ export const generateCakeDetails = async (prompt: string): Promise<GeneratedCake
     };
 
     const response = await ai.models.generateContent({
-      model: 'gemini-2.5-flash',
+      model: 'gemini-3-flash-preview',
       contents: `Generate a detailed quote and description for a custom wedding or event cake request: "${prompt}".
       The tone should be professional, celebratory, and upscale, suitable for a Malaysian audience.`,
       config: {
