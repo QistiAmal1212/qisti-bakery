@@ -6,7 +6,7 @@ import { GeneratedCakeResponse } from '../types';
  * Creates a chat session with specific context for Qisti Bakery
  */
 export const createBakeryChat = (): Chat => {
-  const ai = new GoogleGenAI({ apiKey: AIzaSyBoDEWyglc03QA1L-OwmuV0mYdGnMv6Kg8 });
+  const ai = new GoogleGenAI({ apiKey: "AIzaSyBoDEWyglc03QA1L-OwmuV0mYdGnMv6Kg8" });
   return ai.chats.create({
     model: 'gemini-3-flash-preview',
     config: {
